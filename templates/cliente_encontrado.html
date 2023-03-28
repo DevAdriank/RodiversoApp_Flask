@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Dev_Adrian">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Rodiverso - Cliente</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" type="text/css" href="/css/my-login.css"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/my-login.css') }}">
+</head>
+
+<body class="my-login-page">
+    <section class="h-100">
+        <div class="container h-100">
+            <div class="row justify-content-md-center h-100">
+                <div class="card-wrapper">
+                    <!-- <div class="brand">
+                        <img src="{{ url_for('static', filename='img/LOGO_Rodiverso.png') }}" alt="Descripción de la imagen">
+                    </div> -->
+                    <div class="card-header" style="margin-top: 110px;"></div>
+                    <div class="card fat">
+                        <div class="card-body">
+                            <div style="margin-top: -140px; margin-bottom: -50px; padding-top: 10px; z-index: 1; text-align: center;">
+                                <img src="{{ url_for('static', filename='img/Diversion (1).png') }}" width="60%" alt="Descripción de la imagen">
+                            </div>
+                            <h4 class="card-title text-center">Registro de Cliente - Rodiverso</h4>
+
+                            <form method="POST" class="my-login-validation" novalidate="" method="POST" action="{{ url_for('actualiza_registro') }}">
+                                <div class="form-group">
+                                    <label for="cedula">Cedula/DNI</label>
+                                    <input id="cedula" type="text" class="form-control" name="cteCedula" value="{{ cliente['cteCedula'] }}" readonly>
+                                    <div class="invalid-feedback">
+                                        Usuario es Incorrecto
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="nombre">Nombre y Apellido</label>
+                                    <input id="nombre" type="text" class="form-control" name="cteNombre" value="{{ cliente['cteNombre'] }}" pattern="[A-Za-z ]+" title="Ingrese solo letras y espacios" required autofocus>
+                                    <div class="invalid-feedback">
+                                        Usuario es Incorrecto
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="telefono">Teléfono</label>
+                                    <input id="telefono" type="text" class="form-control" name="cteTelefono" value="{{ cliente['cteTelefono'] }}" required autofocus>
+                                    <div class="invalid-feedback">
+                                        Usuario es Incorrecto
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="direccion">Dirección</label>
+                                    <input id="direccion" type="text" class="form-control" name="cteUrbanizacion" value="{{ cliente['cteUrbanizacion'] }}" required autofocus>
+                                    <div class="invalid-feedback">
+                                        Usuario es Incorrecto
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="custom-checkbox custom-control">
+                                        <!-- <input type="checkbox" name="remember" id="remember" class="custom-control-input">
+                                        <label for="remember" class="custom-control-label">Remember Me</label> -->
+                                    </div>
+                                </div>
+                                <div class="form-group m-0">
+                                    <button type="submit" class="btn btn-primary btn-block" name="action" value="actualizar">
+										Actualizar
+									</button> {% if mensaje_error %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ mensaje_error }}
+                                    </div>
+                                    {% endif %} {% if mensaje_exito %}
+                                    <div class="alert alert-success" role="alert">
+                                        {{ mensaje_exito }}
+                                    </div>
+                                    {% endif %}
+
+                                    <br>
+                                    <button class="btn btn-success btn-block" name="action" value="atras">
+										Atras
+									</button>
+                                    <button class="btn btn-warning btn-block" name="action" value="home">
+										Home
+									</button>
+                                </div>
+
+                            </form>
+                            {% with messages = get_flashed_messages() %} {% if messages %}
+                            <div class="alert alert-success" role="alert">
+                                {% for message in messages %} {{ message }} {% endfor %}
+                            </div>
+                            {% endif %} {% endwith %}
+
+                        </div>
+
+                    </div>
+                    <div class="footer">
+                        Copyright &copy; 2023 &mdash; Rodiverso
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="{{ url_for('static', filename='js/validacion.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- <script src="js/my-login.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/js/my-login.js') }}">
+</body>
+
+</html>
